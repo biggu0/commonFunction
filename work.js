@@ -38,3 +38,24 @@ if(!Array.prototype.shuffle ){
 		}
 	}
 }
+//对象的拷贝
+ function extend(){ //# 对象扩展
+	var target = arguments[0] || {}, i = 1, length = arguments.length, options;
+	if ( typeof target != "object" && typeof target != "function" )
+		target = {};
+	for ( ; i < length; i++ ){
+		if ( (options = arguments[ i ]) != null ){
+			for ( var name in options ) {
+				var copy = options[ name ];
+				if ( target === copy ){
+					continue;
+				}
+				if ( copy !== undefined ){
+					target[ name ] = copy;
+				}
+			}
+		}
+	}
+	return target;
+};
+//深度拷贝完善
